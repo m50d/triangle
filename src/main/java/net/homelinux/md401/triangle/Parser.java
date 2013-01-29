@@ -40,7 +40,7 @@ public abstract class Parser {
 				try {
 					parsedEntries.add(Integer.valueOf(entries[j]));
 				} catch (NumberFormatException nfe) {
-					handleError("Entry " + j + " of line " + i + " could not be parsed as an integer: " + nfe);
+					handleError("Entry " + (j + 1) + " of line " + i + " could not be parsed as an integer: " + nfe);
 				}
 			toReturn.add(parsedEntries.build());
 		}
