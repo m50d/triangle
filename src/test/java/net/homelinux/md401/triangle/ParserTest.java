@@ -11,6 +11,8 @@ import org.junit.Test;
 import com.google.common.collect.ImmutableList;
 
 public class ParserTest {
+	static final ImmutableList<ImmutableList<Integer>> SMALL_TRIANGLE = il(il(7), il(6, 3), il(3, 8, 5), il(11, 2, 10, 9));
+
 	private static <T> ImmutableList<T> il(T... args) {
 		return ImmutableList.copyOf(args);
 	}
@@ -24,7 +26,7 @@ public class ParserTest {
 				Assert.fail();
 			}
 		};
-		assertThat(parser.parse()).isEqualTo(il(il(7), il(6, 3), il(3, 8, 5), il(11, 2, 10, 9)));
+		assertThat(parser.parse()).isEqualTo(SMALL_TRIANGLE);
 	}
 
 	private static class ExpectedErrorException extends RuntimeException {
