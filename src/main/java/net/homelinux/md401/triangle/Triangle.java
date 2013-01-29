@@ -16,7 +16,7 @@ public class Triangle {
 		final List<ImmutableList<Integer>> rowsInReverseOrder = Lists.reverse(rows);
 		final int lengthOfDummyRow = rowsInReverseOrder.get(0).size() + 1;
 		ImmutableList<ISolvedNode> workingRow = ImmutableList.copyOf(Collections.<ISolvedNode>nCopies(lengthOfDummyRow, new EndNode()));
-		for(ImmutableList<Integer> row: rows)
+		for(ImmutableList<Integer> row: rowsInReverseOrder)
 			workingRow = solveRow(row, workingRow);
 		return workingRow.get(0); //we know it must have length 1 because input validation has already happened. Possibly would be nice to enforce this at the type level
 	}
