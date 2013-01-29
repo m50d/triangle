@@ -3,4 +3,16 @@
   <groupId>net.homelinux.md401</groupId>
   <artifactId>triangle</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+      <dependency>
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava</artifactId>
+          <version>13.0.1</version>
+      </dependency>
+      <dependency>
+          <groupId>commons-lang</groupId>
+          <artifactId>commons-lang</artifactId>
+          <version>2.6</version>
+      </dependency>
+  </dependencies>
 </project>
