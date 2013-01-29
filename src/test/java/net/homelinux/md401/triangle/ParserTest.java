@@ -14,16 +14,32 @@ public class ParserTest {
 	private static <T> ImmutableList<T> il(T... args) {
 		return ImmutableList.copyOf(args);
 	}
-	
+
 	@Test
 	public void parsesSmallTriangle() throws Exception {
 		Parser parser = new Parser(new FileInputStream(new File("src/test/resources/smalltriangle.txt"))) {
-			
+
 			@Override
 			protected void handleError(String error) {
 				Assert.fail();
 			}
 		};
-		assertThat(parser.parse()).isEqualTo(il(il(7), il(6,3), il(3,8,5),il(11,2,10,9)));
+		assertThat(parser.parse()).isEqualTo(il(il(7), il(6, 3), il(3, 8, 5), il(11, 2, 10, 9)));
+	}
+
+	private static class ExpectedErrorException extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+	}
+	
+	@Test(expected = ExpectedErrorException.class)
+	public void parseSmallTriangleWithExtraEntry() throws Exception {
+		new Parser(new FileInputStream(new File("src/test/resources/smalltriangleextraentry.txt"))) {
+
+			@Override
+			protected void handleError(String error) {
+				assertThat(error).isEqualTo("Wrong number of entries in line 3, should be 3 but was 4");
+				throw new ExpectedErrorException();
+			}
+		}.parse();
 	}
 }
