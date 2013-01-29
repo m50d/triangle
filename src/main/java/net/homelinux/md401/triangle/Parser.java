@@ -29,6 +29,7 @@ public abstract class Parser {
 			// unrecoverable, and not likely to be the result of user error
 			throw new RuntimeException(e);
 		}
+		if(rows.isEmpty()) handleError("No input lines");
 		Iterator<String> rowIterator = rows.iterator();
 		Builder<ImmutableList<Integer>> toReturn = ImmutableList.builder();
 		for (int i = 1; rowIterator.hasNext(); i++) {

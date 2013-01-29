@@ -56,4 +56,16 @@ public class ParserTest {
 			}
 		}.parse();
 	}
+	
+	@Test(expected = ExpectedErrorException.class)
+	public void parseEmptyFile() throws Exception {
+		new Parser(new FileInputStream(new File("src/test/resources/emptyfile.txt"))) {
+
+			@Override
+			protected void handleError(String error) {
+				assertThat(error).isEqualTo("No input lines");
+				throw new ExpectedErrorException();
+			}
+		}.parse();
+	}
 }

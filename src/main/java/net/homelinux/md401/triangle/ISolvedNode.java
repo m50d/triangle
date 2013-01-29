@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 
-interface ISolvedNode {
+public interface ISolvedNode {
 
 	String toDescription(ImmutableList<Integer> pathUpToHere);
 
